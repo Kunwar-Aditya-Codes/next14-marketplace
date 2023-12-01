@@ -2,6 +2,7 @@
   "name": "next-designhub",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/server.js",
   "scripts": {
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc --project tsconfig.server.json",
@@ -12,6 +13,9 @@
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "lint": "next lint"
+  },
+  "resolutions": {
+    "cliui": "7.0.2"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
