@@ -94,12 +94,11 @@ const Cart = () => {
         ) : (
           <div className='flex h-full flex-col items-center justify-center space-y-1'>
             <div className='relative mb-4 h-60 w-60 text-muted-foreground'>
-              {/* TODO: Change the image as per logo */}
               <Image
                 aria-hidden='true'
                 alt='empty shopping cart hippo'
                 fill
-                src='/hippo-empty-cart.png'
+                src='/empty-cart.png'
               />
             </div>
             <div className='text-xl font-semibold'>Your cart is empty</div>
