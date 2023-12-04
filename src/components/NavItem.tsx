@@ -1,27 +1,27 @@
-'use client'
+'use client';
 
-import { PRODUCT_CATEGORIES } from '@/config'
-import { Button } from './ui/button'
-import { ChevronDown } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import Link from 'next/link'
+import { PRODUCT_CATEGORIES } from '@/config';
+import { Button } from './ui/button';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
 
-type Category = (typeof PRODUCT_CATEGORIES)[number]
+type Category = (typeof PRODUCT_CATEGORIES)[number];
 
 interface NavItemProps {
-  category: Category
-  handleOpen: () => void
-//   close: () => void
-  isOpen: boolean
-  isAnyOpen: boolean
+  category: Category;
+  handleOpen: () => void;
+  close: () => void;
+  isOpen: boolean;
+  isAnyOpen: boolean;
 }
 
 const NavItem = ({
   isAnyOpen,
   category,
   handleOpen,
-//   close,
+  close,
   isOpen,
 }: NavItemProps) => {
   return (
@@ -30,15 +30,13 @@ const NavItem = ({
         <Button
           className='gap-1.5'
           onClick={handleOpen}
-          variant={isOpen ? 'secondary' : 'ghost'}>
+          variant={isOpen ? 'secondary' : 'ghost'}
+        >
           {category.label}
           <ChevronDown
-            className={cn(
-              'h-4 w-4 transition-all text-muted-foreground',
-              {
-                '-rotate-180': isOpen,
-              }
-            )}
+            className={cn('h-4 w-4 transition-all text-muted-foreground', {
+              '-rotate-180': isOpen,
+            })}
           />
         </Button>
       </div>
@@ -49,10 +47,10 @@ const NavItem = ({
           className={cn(
             'absolute inset-x-0 top-full text-sm text-muted-foreground',
             {
-              'animate-in fade-in-10 slide-in-from-top-5':
-                !isAnyOpen,
+              'animate-in fade-in-10 slide-in-from-top-5': !isAnyOpen,
             }
-          )}>
+          )}
+        >
           <div
             className='absolute inset-0 top-1/2 bg-white shadow'
             aria-hidden='true'
@@ -66,7 +64,8 @@ const NavItem = ({
                     <div
                       onClick={() => close}
                       key={item.name}
-                      className='group relative text-base sm:text-sm'>
+                      className='group relative text-base sm:text-sm'
+                    >
                       <div className='relative aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75'>
                         <Image
                           src={item.imageSrc}
@@ -78,12 +77,11 @@ const NavItem = ({
 
                       <Link
                         href={item.href}
-                        className='mt-6 block font-medium text-gray-900'>
+                        className='mt-6 block font-medium text-gray-900'
+                      >
                         {item.name}
                       </Link>
-                      <p
-                        className='mt-1'
-                        aria-hidden='true'>
+                      <p className='mt-1' aria-hidden='true'>
                         Shop now
                       </p>
                     </div>
@@ -95,7 +93,7 @@ const NavItem = ({
         </div>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default NavItem
+export default NavItem;

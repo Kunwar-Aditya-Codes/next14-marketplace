@@ -44,6 +44,8 @@ const NavItems = () => {
             setActiveIndex(i);
           }
         };
+
+        const close = () => setActiveIndex(null)
         const isOpen = i === activeIndex;
 
         return (
@@ -51,7 +53,7 @@ const NavItems = () => {
             category={category}
             isAnyOpen={isAnyOpen}
             isOpen={isOpen}
-            // close={}
+            close={close}
             handleOpen={handleOpen}
             key={category.value}
           />
