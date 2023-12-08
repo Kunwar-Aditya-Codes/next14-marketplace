@@ -22,6 +22,7 @@ const PaymentStatus = ({ orderEmail, isPaid, orderId }: PaymentStatusProps) => {
       refetchInterval: (data) => (data?.isPaid ? false : 1000),
       onSuccess({ isPaid }) {
         if (isPaid === true) clearCart();
+        // some random test
       },
     }
   );
