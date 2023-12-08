@@ -20,12 +20,14 @@ const PaymentStatus = ({ orderEmail, isPaid, orderId }: PaymentStatusProps) => {
     {
       enabled: isPaid === false,
       refetchInterval: (data) => (data?.isPaid ? false : 1000),
+      onSuccess({ isPaid }) {
+        if (isPaid === true) clearCart();
+      },
     }
   );
 
   useEffect(() => {
     if (data?.isPaid) {
-      clearCart();
       router.refresh();
     }
   }, [data?.isPaid, router]);
