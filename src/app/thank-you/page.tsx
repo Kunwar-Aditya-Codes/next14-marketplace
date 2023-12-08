@@ -71,6 +71,7 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
             </h1>
 
             {order._isPaid ? (
+              
               <p className='mt-2 text-base text-muted-foreground'>
                 Your order was processed and your assets are available to
                 download below. We&apos;ve sent your receipt and order details

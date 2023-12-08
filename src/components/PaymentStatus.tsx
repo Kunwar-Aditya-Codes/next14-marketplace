@@ -1,5 +1,6 @@
 'use client';
 
+import { useCart } from '@/hooks/use-cart';
 import { trpc } from '@/trpc/client';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -12,6 +13,7 @@ interface PaymentStatusProps {
 
 const PaymentStatus = ({ orderEmail, isPaid, orderId }: PaymentStatusProps) => {
   const router = useRouter();
+  const { clearCart } = useCart();
 
   const { data } = trpc.payment.pollOrderStatus.useQuery(
     { orderId },
@@ -22,7 +24,10 @@ const PaymentStatus = ({ orderEmail, isPaid, orderId }: PaymentStatusProps) => {
   );
 
   useEffect(() => {
-    if (data?.isPaid) router.refresh();
+    if (data?.isPaid) {
+      clearCart();
+      router.refresh();
+    }
   }, [data?.isPaid, router]);
 
   return (
